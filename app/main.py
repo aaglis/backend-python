@@ -1,4 +1,5 @@
 from fastapi import Depends, FastAPI, HTTPException
+from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
 
 from app.database import Base, engine, get_db
@@ -19,6 +20,14 @@ def on_startup():
     """Cria as tabelas no banco ao iniciar (útil para dev/quickstart).
     Em produção, prefira usar `alembic upgrade head`."""
     Base.metadata.create_all(bind=engine)
+
+
+# ─── Redirect raiz → Swagger ───────────────────────────────────────────
+
+
+@app.get("/", include_in_schema=False)
+def root():
+    return RedirectResponse(url="/docs")
 
 
 # ─── Health ────────────────────────────────────────────────────────────
