@@ -33,6 +33,11 @@ def root():
 # ─── Health ────────────────────────────────────────────────────────────
 
 
+@app.get("/versao", tags=["Health"])
+def versao():
+    return {"versao": "1.0"}
+
+
 @app.get("/health", tags=["Health"])
 def health_check():
     return {"status": "ok", "database_url": str(engine.url).split("@")[-1] if "@" in str(engine.url) else "sqlite"}
