@@ -35,7 +35,7 @@ def root():
 
 @app.get("/health", tags=["Health"])
 def health_check():
-    return {"status": "ok", "ambiente": "desenvolvimento", "regiao": "nordeste"}
+    return {"status": "ok", "ambiente": "desenvolvimento", "regiao": "nordeste", "versao": "1.0"}
 
 
 # ─── Items CRUD ────────────────────────────────────────────────────────
