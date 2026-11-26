@@ -33,11 +33,6 @@ def root():
 # ─── Health ────────────────────────────────────────────────────────────
 
 
-@app.get("/saude", tags=["Health"])
-def saude():
-    return {"ok": True}
-
-
 @app.get("/health", tags=["Health"])
 def health_check():
     return {"status": "ok", "database_url": str(engine.url).split("@")[-1] if "@" in str(engine.url) else "sqlite"}
