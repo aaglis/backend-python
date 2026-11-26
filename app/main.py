@@ -35,7 +35,7 @@ def root():
 
 @app.get("/health", tags=["Health"])
 def health_check():
-    return {"status": "ok", "database_url": str(engine.url).split("@")[-1] if "@" in str(engine.url) else "sqlite"}
+    return {"status": "ok", "ambiente": "desenvolvimento"}
 
 
 # ─── Items CRUD ────────────────────────────────────────────────────────
